@@ -1,0 +1,4 @@
+{
+	"//": "Necessary to be able to reference app modules as a relative path",
+	"name": "app"
+}

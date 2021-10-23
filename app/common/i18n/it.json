@@ -1,0 +1,11 @@
+{
+  "en": "Inglese",
+  "ar": "Arabo",
+  "it": "Italiano",
+  "language": "Lingua:",
+  "restart-app": "Lingua modificata. Riavvia l'app affinché le modifiche abbiano effetto.",
+  "theme": "Tema:",
+  "custom": "Personalizzato",
+  "dark": "Scuro",
+  "light": "Chiaro"
+}

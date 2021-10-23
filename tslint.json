@@ -1,0 +1,26 @@
+{
+    "extends": ["tslint:recommended", "tslint-react"],
+    "rules": {
+        "jsx-no-lambda": false,
+        "interface-name" : [true, "never-prefix"],
+        "no-consecutive-blank-lines": [true, 2],
+        "no-switch-case-fall-through": true,
+        "whitespace": {
+            "options": [
+                "check-branch",
+                "check-decl",
+                "check-module",
+                "check-operator",
+                "check-separator",
+                "check-type",
+                "check-typecast"
+            ]
+        }
+    },
+    "linterOptions": {
+        "exclude": [
+            "**/__mocks__/**/*.json",
+            "documentation/"
+        ]
+    }
+}
