@@ -1,21 +1,33 @@
 
-# Crypto Updates App
-Coding challenge from Newton
+# Deliveries Management App
+###Coding challenge from Paack
 
 ## Install and run
 ```
-cd crypto-tracker
-yarn
+cd CodingChallenge
+yarn && yarn jetify
 cd ios && pod install
-Open CryptoUpdatesApp.xcworkspace from XCode and run the CryptoUpdatesApp target.
+
+👉 iOS
+Open CodingChallenge.xcworkspace from XCode and run the CodingChallenge target.
+
+👉 Android
+Open `CodingChallenge/android` on Android Studio and run the app on an emulator/device.
 ```
 
-#### Run tests
+### Run tests
 ```
 yarn test
 ```
 
-#### TypeScript & Linter
+### TypeScript & Linter
 ```
 yarn check-linter && yarn check-typescript
 ```
+
+### Libraries used
+
+- Type safety: `typescript`
+- Navigation: `react-navigation`
+- State management: `redux, rxjs, redux-observable, redux-persist, reselect`
+- Internationalization: `react-i18next`

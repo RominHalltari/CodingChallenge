@@ -9,11 +9,10 @@ import {
     ViewStyle,
 } from "react-native";
 
-import { Theme } from "@react-navigation/native";
+import { DefaultTheme } from "@react-navigation/native";
 import { xLight } from "app/styles";
 
 interface DefaultButtonProps extends TouchableOpacityProps {
-    theme: Theme;
     disabledColor?: string;
     height?: number;
     loading?: boolean;
@@ -24,6 +23,7 @@ export class DefaultButton extends React.PureComponent<DefaultButtonProps> {
     public static defaultProps = {
         height: 56,
         onDisabledPress: () => null,
+        theme: DefaultTheme,
     };
 
     public render() {
@@ -33,7 +33,7 @@ export class DefaultButton extends React.PureComponent<DefaultButtonProps> {
         let disabledColorStyle = {};
         if (disabled) {
             disabledColorStyle = {
-                backgroundColor: this.props.disabledColor || xLight(this.props.theme.colors.primary),
+                backgroundColor: this.props.disabledColor || xLight(DefaultTheme.colors.primary),
             };
         }
 
@@ -53,7 +53,7 @@ export class DefaultButton extends React.PureComponent<DefaultButtonProps> {
             content = (
                 <View style={styles.loadingContent}>
                     <ActivityIndicator
-                        color={this.props.theme.colors.background}
+                        color={DefaultTheme.colors.background}
                         style={styles.spinner}
                     />
                     {this.props.children}

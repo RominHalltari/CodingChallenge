@@ -7,33 +7,18 @@ import dateFnsEnGb from "date-fns/locale/en-GB";
 
 i18n.use(reactI18nextModule).init({
     fallbackLng: BuildConfig.LANGUAGE,
-    ns: ["common", "ui", "utils", "cryptoTracker"],
+    ns: ["common", "ui", "utils", "delivery"],
     returnEmptyString: false,
 
     react: {
         wait: true,
     },
     resources: {
-        ar: {
-            auth: require("./auth/i18n/ar"),
-            common: require("./common/i18n/ar"),
-            cryptoTracker: require("./cryptoTracker/i18n/ar"),
-            ui: require("./ui/i18n/ar"),
-            utils: require("./utils/i18n/ar"),
-        },
         en: {
-            auth: require("./auth/i18n/en"),
             common: require("./common/i18n/en"),
-            cryptoTracker: require("./cryptoTracker/i18n/en"),
+            delivery: require("./delivery/i18n/en"),
             ui: require("./ui/i18n/en"),
             utils: require("./utils/i18n/en"),
-        },
-        it: {
-            auth: require("./auth/i18n/it"),
-            common: require("./common/i18n/it"),
-            cryptoTracker: require("./cryptoTracker/i18n/it"),
-            ui: require("./ui/i18n/it"),
-            utils: require("./utils/i18n/it"),
         },
     },
 });

@@ -1,11 +1,4 @@
 {
-  "en": "English",
-  "ar": "Arabic",
-  "it": "Italian",
-  "language": "Language:",
-  "restart-app": "Language changed. Please restart the app for the changes to take place.",
-  "theme": "Theme:",
-  "custom": "Custom",
-  "dark": "Dark",
-  "light": "Light"
+  "deliveries": "Deliveries",
+  "delivery-details": "Delivery details"
 }

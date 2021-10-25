@@ -1,49 +1,29 @@
-import LandingScreen from "app/auth/screens/login/LandingScreen";
-import LoginScreen from "app/auth/screens/login/LoginScreen";
-import CoinDetailsScreen from "app/cryptoTracker/screens/CoinDetailsScreen";
 import React from "react";
-import {
-    withNamespaces,
-    WithNamespaces,
-} from "react-i18next";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
-import { connect } from "react-redux";
 
-import { NavigationContainer, Theme } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { getIsLoggedIn } from "app/auth/selectors/auth";
-import { getTheme } from "app/common/selectors/theme";
-import { State } from "app/modules";
+import DeliveriesListScreen from "app/delivery/screens/DeliveriesListScreen";
+import DeliveryDetailsScreen from "app/delivery/screens/DeliveryDetailsScreen";
+import { withNamespaces, WithNamespaces } from "react-i18next";
 
-interface NavigationContainerProps extends WithNamespaces {
-    isLoggedIn: boolean;
-    theme: Theme;
-}
-
-class ScreensContainer extends React.PureComponent<NavigationContainerProps> {
+class ScreensContainer extends React.PureComponent<WithNamespaces> {
     public render() {
         const Stack = createStackNavigator();
-        const landingScreen = (
-            <Stack.Screen
-                options={{headerShown: false}}
-                name="LandingScreen"
-                component={LandingScreen}
-            />
-        );
-        const loginScreen = (
-            <Stack.Screen
-                options={{headerShown: false}}
-                name="LoginScreen"
-                component={LoginScreen}
-            />
-        );
 
         return (
-            <NavigationContainer theme={this.props.theme} fallback={this.renderFallback()}>
-                <Stack.Navigator screenOptions={{headerShown: false}}>
-                    {!this.props.isLoggedIn && landingScreen}
-                    {!this.props.isLoggedIn && loginScreen}
-                    <Stack.Screen name="HomeScreen" component={CoinDetailsScreen}/>
+            <NavigationContainer fallback={this.renderFallback()}>
+                <Stack.Navigator>
+                    <Stack.Screen
+                        options={{headerShown: true, title: this.props.t("deliveries")}}
+                        name="DeliveriesListScreen"
+                        component={DeliveriesListScreen}
+                    />
+                    <Stack.Screen
+                        options={{headerShown: true, title: this.props.t("delivery-details")}}
+                        name="DeliveryDetailsScreen"
+                        component={DeliveryDetailsScreen}
+                    />
                 </Stack.Navigator>
             </NavigationContainer>
         );
@@ -52,7 +32,7 @@ class ScreensContainer extends React.PureComponent<NavigationContainerProps> {
     private renderFallback = () => {
         return (
             <View style={styles.fallbackContainer}>
-                <ActivityIndicator color={this.props.theme.colors.primary} size="large"/>
+                <ActivityIndicator size="large"/>
             </View>
         );
     }
@@ -66,12 +46,4 @@ const styles = StyleSheet.create({
     },
 });
 
-const mapStateToProps = (state: State) => {
-    return {
-        isLoggedIn: getIsLoggedIn(state),
-        theme: getTheme(state),
-    };
-};
-
-const ScreensContainerTranslated = withNamespaces("auth")(ScreensContainer);
-export default connect(mapStateToProps)(ScreensContainerTranslated);
+export default withNamespaces("common")(ScreensContainer);

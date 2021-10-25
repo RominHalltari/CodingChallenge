@@ -1,13 +1,8 @@
-import { Theme } from "@react-navigation/native";
 import BaseText from "app/ui/BaseText";
 import React from "react";
 import { StyleSheet, TextProps } from "react-native";
 
-interface DefaultPrimaryButtonTextProps extends TextProps {
-    theme: Theme;
-}
-
-export class DefaultPrimaryButtonText extends React.PureComponent<DefaultPrimaryButtonTextProps> {
+export class DefaultPrimaryButtonText extends React.PureComponent<TextProps> {
   public render() {
     return (
         <BaseText

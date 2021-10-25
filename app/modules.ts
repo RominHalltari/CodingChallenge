@@ -1,18 +1,16 @@
 import { Module } from "./types";
 
 import api from "./api";
-import auth from "./auth";
 import common from "./common";
-import cryptoTracker from "./cryptoTracker";
+import delivery from "./delivery";
 import settings from "./settings";
 import ui from "./ui";
 
 const allmodules: any = {
     // debug,
     api,
-    auth,
     common,
-    cryptoTracker,
+    delivery,
     settings,
     ui,
 };
@@ -31,7 +29,7 @@ export interface State {
     common: ReturnType<typeof allmodules.common.reducer>;
     core: ReturnType<typeof allmodules.core.reducer>;
     settings: ReturnType<typeof allmodules.settings.reducer>;
-    cryptoTracker: ReturnType<typeof allmodules.cryptoTracker.reducer>;
+    delivery: ReturnType<typeof allmodules.delivery.reducer>;
 }
 
 export default requiredModules as { [moduleName: string]: Module };

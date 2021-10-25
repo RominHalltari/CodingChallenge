@@ -2,7 +2,6 @@ import {
     BadRequest,
     ConnectionError,
     DecodeError,
-    InvalidResponse,
     NotFound,
     PermissionDenied,
     Unauthorized,
@@ -10,9 +9,7 @@ import {
 } from "app/api/errors";
 import * as settings from "app/settings/selectors";
 
-import { getAPIVersion } from "app/utils/apiVersion";
 import { getStore } from "app/utils/redux";
-import { Buffer } from "buffer";
 
 const encodeGetParams = (p: {[key: string]: any}) => (
     Object.keys(p).map(
@@ -90,82 +87,6 @@ export interface AuthenticationResponse {
     id: number;
     token: string;
     [key: string]: any;
-}
-
-function processAuthenticationResponse(response: any) {
-    if (! response.hasOwnProperty("token")) {
-        throw new InvalidResponse(
-            response,
-            "Authentication response object is missing the token.",
-        );
-    }
-
-    if (!response.hasOwnProperty("id")) {
-        throw new InvalidResponse(
-            response,
-            "Authentication response object is missing the user id.",
-        );
-    }
-    return response;
-}
-
-function processAdhocAuthenticationResponse(response: any) {
-    if (! response.hasOwnProperty("token")) {
-        throw new InvalidResponse(
-            response,
-            "Authentication response object is missing the token.",
-        );
-    }
-    return response;
-}
-
-export async function authenticate(
-    login: string,
-    password: string,
-): Promise<AuthenticationResponse> {
-    const auth = Buffer.from(login + ":" + password).toString("base64");
-    const url = getUrl(`${getAPIVersion.AUTHENTICATE}/user/user`);
-
-    const response = await request(
-        url,
-        {
-            headers: {
-               "Authorization": `Basic ${auth}`,
-               "Content-Type": "application/json",
-            },
-            method: "GET",
-    });
-
-    return processAuthenticationResponse(response);
-}
-
-export async function authenticateByToken(
-    token: string,
-): Promise<AuthenticationResponse> {
-    const url = getUrl(`${getAPIVersion.AUTHENTICATE}/user/user`);
-    const response = await request(
-        url,
-        {
-            headers: {
-               "Authorization": `Token ${token}`,
-               "Content-Type": "application/json",
-            },
-            method: "GET",
-    });
-    return processAuthenticationResponse(response);
-}
-
-export async function getAdhocCredentials(): Promise<AuthenticationResponse> {
-    const url = getUrl(`${getAPIVersion.AUTHENTICATE}/user/adhoc-credentials`);
-    const response = await request(
-        url,
-        {
-            headers: {
-                "Content-Type": "application/json",
-            },
-            method: "POST",
-        });
-    return processAdhocAuthenticationResponse(response);
 }
 
 function getHeaders(): {[key: string]: string} {

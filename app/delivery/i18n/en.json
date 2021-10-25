@@ -1,0 +1,10 @@
+{
+  "active": "Active",
+  "make-active": "Make active",
+  "deactivate": "Deactivate",
+  "set-delivered": "Set delivered",
+  "set-undelivered": "Set undelivered",
+  "success": "Success",
+  "status-updated-successfully": "Status updated successfully.",
+  "got-it": "Got it"
+}

@@ -1,7 +1,0 @@
-{
-    "STYLE" : "default",
-    "BASE_URL": "https://dev.newton.co",
-    "ORIENTATION": "portrait",
-    "LANGUAGE": "en",
-    "MODULES": ["api", "common", "cryptoTracker", "debug", "settings", "ui"]
-}

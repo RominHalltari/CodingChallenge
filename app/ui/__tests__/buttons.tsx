@@ -15,7 +15,7 @@ describe("DefaultButton", () => {
         const expectedWidth = "100%";
 
         const component = renderer.create(
-            <DefaultButton theme={lightTheme} height={height} />,
+            <DefaultButton height={height} />,
         ).root;
         const componentStyle: ViewStyle = StyleSheet.flatten(
             component.findByType(TouchableOpacity).props.style,
